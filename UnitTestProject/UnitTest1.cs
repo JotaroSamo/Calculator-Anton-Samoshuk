@@ -18,16 +18,27 @@ namespace UnitTestProject
             Assert.AreEqual(expected,result,"Eror!");
         }
         [TestMethod]
-        public void TestCounting()
+        public void TestDoCalculate()
         {
-            int count = 1;
-            float numo=1;
-            float numt=0;
-            float displayf=1;
-            string expected = "2";
-            Formcal ts = new Formcal();
-            string result = ts.Counting(count,numo,numt,displayf);
+         int count =1;
+            float numo = 2;
+            float displayf = 2;
+            string expected = "4";
+            Calculate calculate = new Calculate();
+            string result = calculate.DoCalculate(count,numo,displayf);
             Assert.AreEqual(expected, result, "Eror!");
+
+        }
+        [TestMethod]
+        public void Testbacker()
+        {
+
+            string displayf = "22";
+            string expected = "2";
+            Calculate calculate = new Calculate();
+            string result = calculate.backer(displayf);
+            Assert.AreEqual(expected, result, "Eror!");
+
         }
 
     }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace Calculator
     {
         int count;
         bool simvol = true;
-        float numo, numt;
+        float numo;
         public Formcal()
         {
             InitializeComponent();
@@ -38,57 +39,28 @@ namespace Calculator
 
         }
 
-        public string Add(int a, string dis)
+        public string Add(int a, string dis)//добавдение числа
         {
-            return dis + a;
-        }
-
-        public string Counting(int count, float numo, float numt, float displayf)
-        {
-
-            switch (count)
+            if (dis.Length == 34)
             {
-
-                case 1:
-                    numt = numo + displayf;
-                    return numt.ToString();
-
-                case 2:
-                    numt = numo - displayf;
-                    return numt.ToString();
-
-                case 3:
-                    numt = numo * displayf;
-                    return numt.ToString();
-
-                case 4:
-                    if (float.Parse(display.Text) == 0)
-                    {
-                        MessageBox.Show("Нельзя делить на ноль!");
-                        return "0";
-                    }
-                    else
-                    {
-                        numt = numo / displayf;
-                        return numt.ToString();
-                    }
-
-                default:
-                    return "0";
-
-
+                MessageBox.Show("Максимальное число!");
+                return dis;
             }
-
-
-
+            else
+            {
+                return dis + a;
+            }
+            
         }
+
 
         private void back_Click_1(object sender, EventArgs e)
         {
-            backer();
+            Calculate calculate = new Calculate();
+           display.Text= calculate.backer(display.Text);
         }
 
-        private void plusmins_Click_1(object sender, EventArgs e)
+        private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
         {
 
             if (simvol == true)
@@ -103,28 +75,7 @@ namespace Calculator
             }
         }
 
-        private void plus_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                numo = float.Parse(display.Text);
-                display.Clear();
-                label1.Text = numo.ToString() + "+";
-
-            }
-            catch (Exception)
-            {
-                backer();
-                label1.Text = numo.ToString() + "+";
-
-
-            }
-            finally
-            {
-                count = 1;
-                simvol = true;
-            }
-        }
+       
         #region numberbutton
         private void button1_Click(object sender, EventArgs e)
         {
@@ -177,104 +128,72 @@ namespace Calculator
         }
         #endregion
 
-        private void dot_Click_1(object sender, EventArgs e)
+        private void dot_Click_1(object sender, EventArgs e)// запятая
         {
             display.Text = display.Text + ",";
         }
 
-        private void equals_Click_1(object sender, EventArgs e)
+        private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
         {
+            Calculate calculate = new Calculate();
             try
             {
-                display.Text = Counting(count, numo, numt, float.Parse(display.Text));
+
+               display.Text = calculate.DoCalculate(count, numo, float.Parse(display.Text));
             }
             catch (Exception)
             {
                 MessageBox.Show("Введите число!!!");
             }
-            if (display.Text != "")
+            if  (display.Text != "")
             {
                 label1.Text = "";
             }
         }
-
+        private void plus_Click_1(object sender, EventArgs e)
+        {
+            Simvols("+", out simvol);
+            count = 1;
+        }
         private void devide_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                numo = float.Parse(display.Text);
-                display.Clear();
-                label1.Text = numo.ToString() + "/";
-
-            }
-            catch (Exception)
-            {
-                backer();
-                label1.Text = numo.ToString() + "/";
-
-
-            }
-            finally
-            {
-                count = 4;
-                simvol = true;
-            }
+            Simvols("/",out simvol);
+            count = 4;
         }
 
         private void multiply_Click_1(object sender, EventArgs e)
         {
-
-            try
-            {
-                numo = float.Parse(display.Text);
-                display.Clear();
-                label1.Text = numo.ToString() + "*";
-
-            }
-            catch (Exception)
-            {
-                backer();
-                label1.Text = numo.ToString() + "*";
-
-            }
-            finally
-            {
-                count = 3;
-                simvol = true;
-            }
+            Simvols("*", out simvol);
+            count = 3;
         }
 
         private void minus_Click_1(object sender, EventArgs e)
         {
+            Simvols("-",out simvol);
+            count = 2;
+        }
+        public void Simvols(string sim, out bool simvol)// Выбор знака
+        {
+            Calculate calculate = new Calculate();
             try
             {
                 numo = float.Parse(display.Text);
+                
+                label1.Text = numo.ToString() + sim;
                 display.Clear();
-                label1.Text = numo.ToString() + "-";
             }
             catch (Exception)
             {
-                backer();
-                label1.Text = numo.ToString() + "-";
+                numo = float.Parse(calculate.backer(numo.ToString())) ;
+                label1.Text = numo.ToString() + sim;
 
             }
             finally
             {
-                count = 2;
                 simvol = true;
             }
         }
-
-        private void backer()
-        {
-            int leng = display.Text.Length - 1;
-            string tx = display.Text;
-            display.Clear();
-            for (int i = 0; i < leng; i++)
-            {
-                display.Text = display.Text + tx[i];
-            }
-        }
+       
 
     }
 }
