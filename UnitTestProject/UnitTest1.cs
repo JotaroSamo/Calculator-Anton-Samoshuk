@@ -18,7 +18,7 @@ namespace UnitTestProject
             Assert.AreEqual(expected,result,"Eror!");
         }
         [TestMethod]
-        public void TestDoCalculate()
+        public void TestDoCalculatePlus()
         {
          int count =1;
             double numo = 2;
@@ -26,6 +26,42 @@ namespace UnitTestProject
             string expected = "4";
             Calculate calculate = new Calculate();
             string result = calculate.DoCalculate(count,numo,displayf);
+            Assert.AreEqual(expected, result, "Eror!");
+
+        }
+        [TestMethod]
+        public void TestDoCalculateMinus()
+        {
+            int count = 2;
+            double numo = 2;
+            double displayf = 2;
+            string expected = "0";
+            Calculate calculate = new Calculate();
+            string result = calculate.DoCalculate(count, numo, displayf);
+            Assert.AreEqual(expected, result, "Eror!");
+
+        }
+        [TestMethod]
+        public void TestDoCalculatemltiple()
+        {
+            int count = 3;
+            double numo = 2;
+            double displayf = 2;
+            string expected = "4";
+            Calculate calculate = new Calculate();
+            string result = calculate.DoCalculate(count, numo, displayf);
+            Assert.AreEqual(expected, result, "Eror!");
+
+        }
+        [TestMethod]
+        public void TestDoCalculateDivide()
+        {
+            int count = 4;
+            double numo = 2;
+            double displayf = 2;
+            string expected = "1";
+            Calculate calculate = new Calculate();
+            string result = calculate.DoCalculate(count, numo, displayf);
             Assert.AreEqual(expected, result, "Eror!");
 
         }
