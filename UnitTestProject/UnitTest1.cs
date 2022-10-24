@@ -21,8 +21,8 @@ namespace UnitTestProject
         public void TestDoCalculate()
         {
          int count =1;
-            float numo = 2;
-            float displayf = 2;
+            double numo = 2;
+            double displayf = 2;
             string expected = "4";
             Calculate calculate = new Calculate();
             string result = calculate.DoCalculate(count,numo,displayf);

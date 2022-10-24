@@ -15,7 +15,7 @@ namespace Calculator
     {
         int count;
         bool simvol = true;
-        float numo;
+        double numo;
         public Formcal()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace Calculator
 
         public string Add(int a, string dis)//добавдение числа
         {
-            if (dis.Length == 34)
+            if (dis.Length == 10)
             {
                 MessageBox.Show("Максимальное число!");
                 return dis;
@@ -139,7 +139,7 @@ namespace Calculator
             try
             {
 
-               display.Text = calculate.DoCalculate(count, numo, float.Parse(display.Text));
+               display.Text = calculate.DoCalculate(count, numo, Convert.ToDouble(display.Text));
             }
             catch (Exception)
             {
@@ -177,14 +177,14 @@ namespace Calculator
             Calculate calculate = new Calculate();
             try
             {
-                numo = float.Parse(display.Text);
+                numo = Convert.ToDouble(display.Text);
                 
                 label1.Text = numo.ToString() + sim;
                 display.Clear();
             }
             catch (Exception)
             {
-                numo = float.Parse(calculate.backer(numo.ToString())) ;
+                numo = Convert.ToDouble(calculate.backer(numo.ToString()+sim)) ;
                 label1.Text = numo.ToString() + sim;
 
             }

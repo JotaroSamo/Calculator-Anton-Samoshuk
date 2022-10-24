@@ -11,9 +11,9 @@ namespace Calculator
     public class Calculate
     {
        
-        public string DoCalculate(int count, float numo, float displayf)// арифметический метод
+        public string DoCalculate(int count, double numo, double displayf)// арифметический метод
         {
-            float numt;
+            double numt;
             switch (count)
             {
 
