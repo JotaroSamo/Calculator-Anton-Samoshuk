@@ -188,10 +188,5 @@ namespace Calculator
                 simvol = true;
             }
         }
-
-        private void display_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

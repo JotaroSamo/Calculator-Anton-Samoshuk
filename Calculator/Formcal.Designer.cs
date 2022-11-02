@@ -279,7 +279,6 @@
             this.display.TabIndex = 19;
             this.display.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.display.WordWrap = false;
-            this.display.TextChanged += new System.EventHandler(this.display_TextChanged);
             // 
             // Formcal
             // 
