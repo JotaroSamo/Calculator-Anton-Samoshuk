@@ -37,7 +37,7 @@ namespace Calculator
                     }
                     else
                     {
-                        numt = numo / displayf;
+                        numt = Math.Round(numo / displayf,0);
                         return numt.ToString();
                     }
 

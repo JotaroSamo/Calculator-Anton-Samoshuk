@@ -123,14 +123,18 @@ namespace Calculator
             try
             {
                 double check=Convert.ToDouble(calculate.DoCalculate(count, numo, Convert.ToDouble(label1.Text + display.Text)));
-                if (check<0)
+                if (check<0&&(check<9999999999 && check > -9999999999))
                 {
                     display.Text=(Math.Abs(check)).ToString();
                     label1.Text = "-";
                 }
-                else
+                else if(check < 9999999999 && check > -9999999999)
                 {
                     display.Text=check.ToString();
+                }
+                else
+                {
+                    display.Text = "«EXCEEDED»";
                 }
 
             }
