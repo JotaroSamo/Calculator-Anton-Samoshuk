@@ -27,14 +27,17 @@ Application for counting numbers, developed in Windows Forms in C#
 
 Обозначение методов:
 
-private void C_Click(object sender, EventArgs e)
+private void C_Click(object sender, EventArgs e)//стриает все данные
  
 public string Add(int a, string dis)//добавдение числа
   
- private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
+private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
    
 private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
     
- public void Simvols(string sim, out bool simvol)// Выбор знака
+public void Simvols(string sim, out bool simvol)// Выбор знака
 
+public string DoCalculate(int count, double numo, double displayf)// арифметический метод
+
+public string backer(string display)// убирает один символ
 
