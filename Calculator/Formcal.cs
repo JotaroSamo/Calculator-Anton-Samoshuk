@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,9 +17,11 @@ namespace Calculator
         int count;
         bool simvol = true;
         double numo;
+        string perm;
         public Formcal()
         {
             InitializeComponent();
+            MaximizeBox = false;
         }
 
        
@@ -27,16 +30,7 @@ namespace Calculator
         {
             display.Text = "";
             label1.Text = "";
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            perm = "";
         }
 
         public string Add(int a, string dis)//добавдение числа
@@ -53,24 +47,17 @@ namespace Calculator
             
         }
 
-
-        private void back_Click_1(object sender, EventArgs e)
-        {
-            Calculate calculate = new Calculate();
-           display.Text= calculate.backer(display.Text);
-        }
-
         private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
         {
 
             if (simvol == true)
             {
-                display.Text = "-" + display.Text;
+                label1.Text = "-";
                 simvol = false;
             }
             else if (simvol == false)
             {
-                display.Text = display.Text.Replace("-", " ");
+                label1.Text = label1.Text.Replace("-", " ");
                 simvol = true;
             }
         }
@@ -128,18 +115,24 @@ namespace Calculator
         }
         #endregion
 
-        private void dot_Click_1(object sender, EventArgs e)// запятая
-        {
-            display.Text = display.Text + ",";
-        }
+       
 
         private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
         {
             Calculate calculate = new Calculate();
             try
             {
+                double check=Convert.ToDouble(calculate.DoCalculate(count, numo, Convert.ToDouble(label1.Text + display.Text)));
+                if (check<0)
+                {
+                    display.Text=(Math.Abs(check)).ToString();
+                    label1.Text = "-";
+                }
+                else
+                {
+                    display.Text=check.ToString();
+                }
 
-               display.Text = calculate.DoCalculate(count, numo, Convert.ToDouble(display.Text));
             }
             catch (Exception)
             {
@@ -147,7 +140,7 @@ namespace Calculator
             }
             if  (display.Text != "")
             {
-                label1.Text = "";
+                perm = "";
             }
         }
         private void plus_Click_1(object sender, EventArgs e)
@@ -177,23 +170,28 @@ namespace Calculator
             Calculate calculate = new Calculate();
             try
             {
-                numo = Convert.ToDouble(display.Text);
                 
-                label1.Text = numo.ToString() + sim;
+                numo = Convert.ToDouble(label1.Text+display.Text);
+
+                perm = numo.ToString() + sim;
+                label1.Text = "";
                 display.Clear();
             }
             catch (Exception)
             {
                 numo = Convert.ToDouble(calculate.backer(numo.ToString()+sim)) ;
-                label1.Text = numo.ToString() + sim;
-
+                perm = label1.Text+numo.ToString() + sim;
+                label1.Text = "";
             }
             finally
             {
                 simvol = true;
             }
         }
-       
 
+        private void display_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -39,13 +39,11 @@
             this.eight = new System.Windows.Forms.Button();
             this.nine = new System.Windows.Forms.Button();
             this.zero = new System.Windows.Forms.Button();
-            this.dot = new System.Windows.Forms.Button();
             this.equals = new System.Windows.Forms.Button();
             this.devide = new System.Windows.Forms.Button();
             this.multiply = new System.Windows.Forms.Button();
             this.minus = new System.Windows.Forms.Button();
             this.C = new System.Windows.Forms.Button();
-            this.back = new System.Windows.Forms.Button();
             this.plusmins = new System.Windows.Forms.Button();
             this.plus = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -166,23 +164,11 @@
             this.zero.ForeColor = System.Drawing.SystemColors.Control;
             this.zero.Location = new System.Drawing.Point(15, 223);
             this.zero.Name = "zero";
-            this.zero.Size = new System.Drawing.Size(75, 23);
+            this.zero.Size = new System.Drawing.Size(156, 23);
             this.zero.TabIndex = 9;
             this.zero.Text = "0";
             this.zero.UseVisualStyleBackColor = false;
             this.zero.Click += new System.EventHandler(this.zero_Click_1);
-            // 
-            // dot
-            // 
-            this.dot.BackColor = System.Drawing.SystemColors.MenuText;
-            this.dot.ForeColor = System.Drawing.SystemColors.Control;
-            this.dot.Location = new System.Drawing.Point(96, 223);
-            this.dot.Name = "dot";
-            this.dot.Size = new System.Drawing.Size(75, 23);
-            this.dot.TabIndex = 10;
-            this.dot.Text = ".";
-            this.dot.UseVisualStyleBackColor = false;
-            this.dot.Click += new System.EventHandler(this.dot_Click_1);
             // 
             // equals
             // 
@@ -238,23 +224,11 @@
             this.C.ForeColor = System.Drawing.SystemColors.Control;
             this.C.Location = new System.Drawing.Point(15, 67);
             this.C.Name = "C";
-            this.C.Size = new System.Drawing.Size(75, 23);
+            this.C.Size = new System.Drawing.Size(156, 23);
             this.C.TabIndex = 15;
             this.C.Text = "C";
             this.C.UseVisualStyleBackColor = false;
             this.C.Click += new System.EventHandler(this.C_Click);
-            // 
-            // back
-            // 
-            this.back.BackColor = System.Drawing.SystemColors.MenuText;
-            this.back.ForeColor = System.Drawing.SystemColors.Control;
-            this.back.Location = new System.Drawing.Point(96, 67);
-            this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(75, 23);
-            this.back.TabIndex = 16;
-            this.back.Text = "<-";
-            this.back.UseVisualStyleBackColor = false;
-            this.back.Click += new System.EventHandler(this.back_Click_1);
             // 
             // plusmins
             // 
@@ -284,11 +258,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(12, 44);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.Size = new System.Drawing.Size(0, 29);
             this.label1.TabIndex = 20;
             // 
             // display
@@ -297,33 +271,30 @@
             this.display.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.display.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.display.ForeColor = System.Drawing.SystemColors.Window;
-            this.display.Location = new System.Drawing.Point(16, 2);
+            this.display.Location = new System.Drawing.Point(70, 12);
             this.display.MaxLength = 100;
+            this.display.Multiline = true;
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(317, 26);
+            this.display.Size = new System.Drawing.Size(263, 29);
             this.display.TabIndex = 19;
             this.display.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.display.WordWrap = false;
-            this.display.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.display.TextChanged += new System.EventHandler(this.display_TextChanged);
             // 
             // Formcal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(343, 262);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.display);
             this.Controls.Add(this.plus);
             this.Controls.Add(this.plusmins);
-            this.Controls.Add(this.back);
             this.Controls.Add(this.C);
             this.Controls.Add(this.minus);
             this.Controls.Add(this.multiply);
             this.Controls.Add(this.devide);
             this.Controls.Add(this.equals);
-            this.Controls.Add(this.dot);
             this.Controls.Add(this.zero);
             this.Controls.Add(this.nine);
             this.Controls.Add(this.eight);
@@ -335,10 +306,11 @@
             this.Controls.Add(this.two);
             this.Controls.Add(this.one);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(359, 301);
+            this.MinimumSize = new System.Drawing.Size(359, 301);
             this.Name = "Formcal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,13 +328,11 @@
         private System.Windows.Forms.Button eight;
         private System.Windows.Forms.Button nine;
         private System.Windows.Forms.Button zero;
-        private System.Windows.Forms.Button dot;
         private System.Windows.Forms.Button equals;
         private System.Windows.Forms.Button devide;
         private System.Windows.Forms.Button multiply;
         private System.Windows.Forms.Button minus;
         private System.Windows.Forms.Button C;
-        private System.Windows.Forms.Button back;
         private System.Windows.Forms.Button plusmins;
         private System.Windows.Forms.Button plus;
         private System.Windows.Forms.Label label1;
