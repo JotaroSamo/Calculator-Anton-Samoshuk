@@ -25,10 +25,16 @@ Application for counting numbers, developed in Windows Forms in C#
 
 ![1](https://user-images.githubusercontent.com/105459589/197389298-a3e967f4-9086-489a-9d2a-6c36ee334803.png)
 
+Обозначение методов:
 
-Если нужно, можно поставить точку с помощью кнопки "."
-
-
-![2](https://user-images.githubusercontent.com/105459589/197389329-deda2ef4-be63-4e0e-9f1f-51c1b53fa32b.png)
+private void C_Click(object sender, EventArgs e)
+ 
+public string Add(int a, string dis)//добавдение числа
+  
+ private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
+   
+private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
+    
+ public void Simvols(string sim, out bool simvol)// Выбор знака
 
 
