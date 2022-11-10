@@ -16,6 +16,7 @@ namespace Calculator
     {
         int count;
         bool simvol = true;
+        bool checkS = true;
         double numo;
         string perm;
         public Formcal()
@@ -92,29 +93,29 @@ namespace Calculator
         }
         private void plus_Click_1(object sender, EventArgs e)
         {
-            Simvols("+", out simvol);
+            Simvols("+", out simvol, out checkS);
             count = 1;
         }
         private void devide_Click_1(object sender, EventArgs e)
         {
-            Simvols("/",out simvol);
+            Simvols("/",out simvol, out checkS);
             count = 4;
         }
 
         private void multiply_Click_1(object sender, EventArgs e)
         {
-            Simvols("*", out simvol);
+            Simvols("*", out simvol, out checkS);
             count = 3;
         }
 
         private void minus_Click_1(object sender, EventArgs e)
         {
-            Simvols("-",out simvol);
+            Simvols("-",out simvol,out checkS);
             count = 2;
         }
         #endregion
         #region method
-        public void Simvols(string sim, out bool simvol)// Выбор знака
+        public void Simvols(string sim, out bool simvol, out bool Checs)// Выбор знака
         {
             Calculate calculate = new Calculate();
             try
@@ -123,17 +124,18 @@ namespace Calculator
                 numo = Convert.ToDouble(label1.Text+display.Text);
 
                 perm = numo.ToString() + sim;
-                label1.Text = "";
-                display.Clear();
+              
+                
             }
             catch (Exception)
             {
                 numo = Convert.ToDouble(calculate.backer(numo.ToString()+sim)) ;
                 perm = label1.Text+numo.ToString() + sim;
-                label1.Text = "";
+
             }
             finally
             {
+                Checs = false;
                 simvol = true;
             }
         }
@@ -176,15 +178,28 @@ namespace Calculator
         }
         public string Add(int a, string dis)//добавдение числа
         {
-            if (dis.Length == 10)
+            if (checkS==true)
             {
+                if (dis.Length == 10)
+                {
+
+                    return dis;
+                }
+                else
+                {
+                    return dis + a;
+                }
                 
-                return dis;
             }
-            else
+           else
             {
-                return dis + a;
+                display.Clear();
+                checkS = true;
+                label1.Text = "";
+                return a.ToString();
+
             }
+            
 
         }
         public void plusmin_C(bool simvol)
