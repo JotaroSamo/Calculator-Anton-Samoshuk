@@ -23,22 +23,6 @@ namespace Calculator
             InitializeComponent();
             MaximizeBox = false;
         }
-
-       
-
-        private void C_Click(object sender, EventArgs e)
-        {
-            C_C();  
-        }
-       
-
-        private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
-        {
-            plusmin_C(simvol);
-        }
-
-       
-       
         #region numberbutton
         private void button1_Click(object sender, EventArgs e)
         {
@@ -90,8 +74,17 @@ namespace Calculator
             display.Text = Add(0, display.Text);
         }
         #endregion
+        #region button
+        private void C_Click(object sender, EventArgs e)
+        {
+            C_C();
+        }
 
-       
+
+        private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
+        {
+            plusmin_C(simvol);
+        }
 
         private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
         {
@@ -119,6 +112,8 @@ namespace Calculator
             Simvols("-",out simvol);
             count = 2;
         }
+        #endregion
+        #region method
         public void Simvols(string sim, out bool simvol)// Выбор знака
         {
             Calculate calculate = new Calculate();
@@ -142,6 +137,7 @@ namespace Calculator
                 simvol = true;
             }
         }
+      
         public void equals_C()
         {
             Calculate calculate = new Calculate();
@@ -205,5 +201,6 @@ namespace Calculator
                 simvol = true;
             }
         }
+        #endregion
     }
 }
