@@ -25,7 +25,7 @@ Application for counting numbers, developed in Windows Forms in C#
 
 ![1](https://user-images.githubusercontent.com/105459589/197389298-a3e967f4-9086-489a-9d2a-6c36ee334803.png)
 
-Обозначение методов:
+Обозначение методов и классов:
 
 Class Formacal // класс с помогательнымии и визуальными методами
 
