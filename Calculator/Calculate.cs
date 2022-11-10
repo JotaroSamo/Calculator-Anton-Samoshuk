@@ -32,7 +32,7 @@ namespace Calculator
                 case 4:
                     if (displayf == 0)
                     {
-                        MessageBox.Show("Нельзя делить на ноль!");
+                        
                         return "0";
                     }
                     else

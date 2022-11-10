@@ -28,40 +28,16 @@ namespace Calculator
 
         private void C_Click(object sender, EventArgs e)
         {
-            display.Text = "";
-            label1.Text = "";
-            perm = "";
+            C_C();  
         }
-
-        public string Add(int a, string dis)//добавдение числа
-        {
-            if (dis.Length == 10)
-            {
-                MessageBox.Show("Максимальное число!");
-                return dis;
-            }
-            else
-            {
-                return dis + a;
-            }
-            
-        }
+       
 
         private void plusmins_Click_1(object sender, EventArgs e)//отрицательное или положительное число
         {
-
-            if (simvol == true)
-            {
-                label1.Text = "-";
-                simvol = false;
-            }
-            else if (simvol == false)
-            {
-                label1.Text = label1.Text.Replace("-", " ");
-                simvol = true;
-            }
+            plusmin_C(simvol);
         }
 
+       
        
         #region numberbutton
         private void button1_Click(object sender, EventArgs e)
@@ -119,33 +95,7 @@ namespace Calculator
 
         private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
         {
-            Calculate calculate = new Calculate();
-            try
-            {
-                double check=Convert.ToDouble(calculate.DoCalculate(count, numo, Convert.ToDouble(label1.Text + display.Text)));
-                if (check<0&&(check<9999999999 && check > -9999999999))
-                {
-                    display.Text=(Math.Abs(check)).ToString();
-                    label1.Text = "-";
-                }
-                else if(check < 9999999999 && check > -9999999999)
-                {
-                    display.Text=check.ToString();
-                }
-                else
-                {
-                    display.Text = "«EXCEEDED»";
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Введите число!!!");
-            }
-            if  (display.Text != "")
-            {
-                perm = "";
-            }
+            equals_C();
         }
         private void plus_Click_1(object sender, EventArgs e)
         {
@@ -189,6 +139,69 @@ namespace Calculator
             }
             finally
             {
+                simvol = true;
+            }
+        }
+        public void equals_C()
+        {
+            Calculate calculate = new Calculate();
+            try
+            {
+                double check = Convert.ToDouble(calculate.DoCalculate(count, numo, Convert.ToDouble(label1.Text + display.Text)));
+                if (check < 0 && (check < 9999999999 && check > -9999999999))
+                {
+                    display.Text = (Math.Abs(check)).ToString();
+                    label1.Text = "-";
+                }
+                else if (check < 9999999999 && check > -9999999999)
+                {
+                    display.Text = check.ToString();
+                }
+                else
+                {
+                    display.Text = "«EXCEEDED»";
+                }
+
+            }
+            catch (Exception)
+            {
+                
+            }
+            if (display.Text != "")
+            {
+                perm = "";
+            }
+        }
+        public void C_C()
+        {
+            display.Text = "";
+            label1.Text = "";
+            perm = "";
+        }
+        public string Add(int a, string dis)//добавдение числа
+        {
+            if (dis.Length == 10)
+            {
+                
+                return dis;
+            }
+            else
+            {
+                return dis + a;
+            }
+
+        }
+        public void plusmin_C(bool simvol)
+        {
+
+            if (simvol == true)
+            {
+                label1.Text = "-";
+                simvol = false;
+            }
+            else if (simvol == false)
+            {
+                label1.Text = label1.Text.Replace("-", " ");
                 simvol = true;
             }
         }
