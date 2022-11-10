@@ -27,6 +27,8 @@ Application for counting numbers, developed in Windows Forms in C#
 
 Обозначение методов:
 
+Class Formacal // класс с помогательнымии и визуальными методами
+
 private void C_Click(object sender, EventArgs e)//стриает все данные
  
 public string Add(int a, string dis)//добавдение числа
@@ -35,7 +37,12 @@ private void plusmins_Click_1(object sender, EventArgs e)//отрицатель�
    
 private void equals_Click_1(object sender, EventArgs e)//Кнопка вычисления
     
-public void Simvols(string sim, out bool simvol)// Выбор знака
+public void Simvols(string sim, out bool simvol)// Выбор знака 
+
+
+
+
+Class Calculate// класс с арифметическими методами
 
 public string DoCalculate(int count, double numo, double displayf)// арифметический метод
 
